@@ -1,5 +1,15 @@
+/*
+Macro to create a ticket in ServiceNow when the user clicks a panel button
+
+Load the attached XML file as a UI extension, then customize this macro with your serviceNow info - etc
+
+*/
+
+
 const xapi = require('xapi');
 
+
+//Enter your ServiceNow info here
 const serviceNow_url = "https://dev86077.service-now.com/api/now/table/incident";
 const serviceNow_username = 'admin';
 const serviceNow_pw = 'C1sco!23';
@@ -50,11 +60,13 @@ xapi.event.on('UserInterface Message TextInput Response', (event) =>{
       var payload;
       //console.log(event.Text);
       
-      //create API call (HTTP Post), add callInfo if gathered
+      //create payload of the API call (HTTP Post), add callInfo if gathered
       if (callInfo !== null){
         payload = JSON.stringify(
             { "short_description":"Incident created on Endpoint: "+SystemName+"@ "+currentTime, 
               "comments": "[code]<h2>Customer Comments / Description: \n</h2>[/code]"+event.Text,
+              //set higher impact since we are in a call
+              "impact": 1,
               "work_notes":
                 "[code]<h1>System Info</h1>[/code]"
                 +"[code]<h2>System Admin Page: <a href=\"https://"+IP+"\" target=\"_blank\" style=\"color:blue\">http://"+IP+"</a></h2>[/code]\n\n"
@@ -66,6 +78,7 @@ xapi.event.on('UserInterface Message TextInput Response', (event) =>{
         payload = JSON.stringify(
             { "short_description":"Incident created on Endpoint: "+SystemName+"@ "+currentTime, 
               "comments": "[code]<h2>Customer Comments / Description: \n</h2>[/code]"+event.Text,
+              "impact": 2,
               "work_notes":
                 "[code]<h1>System Info</h1>[/code]"
                 +"[code]<h2>System Admin Page: <a href=\"https://"+IP+"\" target=\"_blank\" style=\"color:blue\">http://"+IP+"</a></h2>[/code]\n\n"
