@@ -1,0 +1,12 @@
+<Extensions>
+  <Version>1.6</Version>
+  <Panel>
+    <PanelId>panel_1</PanelId>
+    <Type>Statusbar</Type>
+    <Icon>Help</Icon>
+    <Order>1</Order>
+    <Color>#FF3D67</Color>
+    <Name>Help!</Name>
+    <ActivityType>Custom</ActivityType>
+  </Panel>
+</Extensions>
