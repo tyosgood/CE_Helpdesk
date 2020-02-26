@@ -41,6 +41,7 @@ function createticket(event) {
       }
     });
     
+    //display the prompt for user data capture
     xapi.command("UserInterface Message TextInput Display", {
                                 Duration: 0
                               , FeedbackId: "ticket_open"
