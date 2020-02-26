@@ -3,6 +3,8 @@ Macro to create a ticket in ServiceNow when the user clicks a panel button
 
 Load the attached XML file as a UI extension, then customize this macro with your serviceNow info - etc
 
+See the CE API Reference @ https://www.cisco.com/c/en/us/support/collaboration-endpoints/spark-room-kit-series/products-command-reference-list.html
+
 */
 
 
